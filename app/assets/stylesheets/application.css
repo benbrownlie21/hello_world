@@ -13,3 +13,73 @@
  *= require_tree .
  *= require_self
  */
+
+ /* General Table Styling */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  font-family: sans-serif;
+}
+
+th, td {
+  padding: 12px;
+  text-align: center;
+  border-bottom: 1px solid #ddd;
+  font-size: 15px;
+}
+
+td {
+  padding: 12px;
+  text-align: center;
+  border-bottom: 1px solid #ddd;
+  font-size: 12px;
+}
+
+/* tr:hover {
+  background-color: #f5f5f5;
+} */
+
+/* Fix for button_to alignment */
+form.button_to {
+  display: inline-block;
+  margin-right: 5px;
+}
+
+button {
+  padding: 6px 10px;
+  cursor: pointer;
+  border-radius: 25px;
+  border: 1px solid #ccc;
+  background-color: white;
+}
+
+/* Specific button colors */
+button:hover { background-color: #e2e2e2; }
+.delete-btn button { color: white; background-color: #dc3545; border: none; }
+.delete-btn button:hover { background-color: #bb2d3b; }
+
+/* 1. Keep the buttons side-by-side */
+.button-group {
+  display: flex;
+  gap: 8px; /* Adjust this number to bring them closer or further apart */
+  justify-content: flex-start;
+}
+
+/* 2. Reset the form margins that Rails buttons create */
+.button-group form {
+  margin: 0;
+  display: inline-block;
+}
+
+/* 3. Optional: Make the action column only as wide as the buttons */
+td:last-child {
+  width: 1%;
+  white-space: nowrap;
+}
+
+.new-button {
+  display: flex;
+  gap: 2px; /* Adjust this number to bring them closer or further apart */
+  justify-content: flex-start;
+}
