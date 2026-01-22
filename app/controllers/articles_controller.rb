@@ -8,6 +8,9 @@ class ArticlesController < ApplicationController
 
   # GET /articles/1 or /articles/1.json
   def show
+    @record = Article.find(params[:id])
+    @next_record = Article.where("id > ?", @record.id).order(:id).first
+    @previous_record = Article.where("id < ?", @record.id).order(:id).last
   end
 
   # GET /articles/new
