@@ -14,6 +14,8 @@
  *= require_self
  */
 
+ @import "bootstrap";
+
  /* General Table Styling */
 table {
   width: 100%;
@@ -82,6 +84,7 @@ td:last-child {
   display: flex;
   gap: 2px; /* Adjust this number to bring them closer or further apart */
   justify-content: flex-start;
+  padding-left: 5px;
 }
 
 .card {
@@ -89,6 +92,7 @@ td:last-child {
   transition: 0.3s;
   border-radius: 8px; /* 5px rounded corners */
   width: 500px;
+  padding-left: 5px;
 }
 
 /* On mouse-over, add a deeper shadow */
@@ -110,4 +114,10 @@ td:last-child {
   padding-left: 8px;
   width: 100%;
   border-bottom: 0.5px solid grey;
+  font-family: 'Courier New', monospace;
+}
+
+body,html {
+    margin:0;
+    padding: 0;
 }
