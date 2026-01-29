@@ -1,19 +1,19 @@
-<p style="color: green"><%= notice %></p>
-
 <% content_for :title, @article.title %>
 
-<div class="card">
-  <div class="container">
-    <h2><b><%= @article.title %></b></h2>
-    <p><%= @article.description %></p>
-    <div class="line-border"></div>
-    <br/>
-    <div class="button-group">
-      <%= button_to '< Previous', article_path(@previous_record), method: :get if @previous_record %>
-      <%= button_to "Edit", edit_article_path(@article), method: :get %>
-      <%= button_to "Delete", @article, method: :delete, data: { turbo_confirm: "Are you sure you want to delete this article?" } %>
-      <%= button_to "Back to Articles", articles_path, method: :get %>
-      <%= button_to 'Next >', article_path(@next_record), method: :get if @next_record %>
+</br>
+<div class="row mt-4 ms-2"> <div class="col-md-6">    <div class="card">
+      <div class="card-body"> <h2><b><%= @article.title %></b></h2>
+        <p><%= @article.description %></p>
+        <div class="line-border"></div>
+        <br/>
+        <div class="button-group d-flex gap-2"> <%= button_to '< Previous', article_path(@previous_record), method: :get, class: "btn btn-light" if @previous_record %>
+          <%= button_to "Edit", edit_article_path(@article), method: :get, class: "btn btn-primary" %>
+          <%= button_to "Delete", @article, method: :delete, data: { turbo_confirm: "Are you sure you want to delete this article?" }, class: "btn btn-danger" %>
+          <%= button_to "Back", articles_path, method: :get, class: "btn btn-secondary" %>
+          <%= button_to 'Next >', article_path(@next_record), method: :get, class: "btn btn-light" if @next_record %>
+        </div>
+      </div>
     </div>
+
   </div>
 </div>

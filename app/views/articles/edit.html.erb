@@ -1,20 +1,5 @@
 <% content_for :title,"Edit #{@article.title}" %>
 
-<h3>Edit Article</h3>
+<h3 style="padding-left: 6px">Edit Article</h3>
 
-<%= render "form", article: @article %>
-
-<br>
-
-<table>
-  <tbody>
-        <tr>
-          <td>
-          <div class="button-group">
-            <%= button_to "Back", @article, method: :get %>
-            <%= button_to "Articles List", articles_path, method: :get %>
-          </div>
-          </td>
-        </tr>
-  </tbody>
-</table>
+<%= render "form_edit", article: @article %>

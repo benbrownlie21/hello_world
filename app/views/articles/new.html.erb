@@ -1,15 +1,5 @@
 <% content_for :title, "New Article" %>
 
-<h3>New Article</h3>
+<h3 style="padding-left: 6px">New Article</h3>
 
 <%= render "form", article: @article %>
-
-<table>
-  <tbody>
-        <div class="button-group">
-        <tr>
-          <td><%= button_to "Articles List", articles_path, method: :get %></td>
-        </tr>
-        </div>
-  </tbody>
-</table>
