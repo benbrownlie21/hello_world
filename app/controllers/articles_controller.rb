@@ -3,7 +3,13 @@ class ArticlesController < ApplicationController
 
   # GET /articles or /articles.json
   def index
-    @articles = Article.all
+    if params[:display] == "all"
+      @articles = Article.all
+    elsif params[:display] == "archived"
+      @articles = Article.archived
+    else
+      @articles = Article.active
+    end
   end
 
   # GET /articles/1 or /articles/1.json
@@ -58,6 +64,19 @@ class ArticlesController < ApplicationController
       format.html { redirect_to articles_path, notice: "Article was successfully deleted", status: :see_other }
       format.json { head :no_content }
     end
+  end
+
+  def set_archived
+    @article = Article.find(params[:id]) # Make sure you find the article first!
+    @article.update_column(:archived, true)
+    redirect_to articles_path, notice: "Article was successfully archived"
+  end
+
+  # Change 'unset' to 'set_un' to match your button path
+  def set_unarchived
+    @article = Article.find(params[:id])
+    @article.update_column(:archived, false)
+    redirect_to articles_path, notice: "Article was successfully unarchived"
   end
 
   private

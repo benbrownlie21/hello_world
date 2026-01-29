@@ -1,12 +1,14 @@
 Rails.application.routes.draw do
-  resources :articles
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  # Add the "do" here to open the block
+  resources :articles do
+    member do
+      patch :set_archived
+      patch :set_unarchived
+    end
+  end # This end closes the resources :articles block
 
-  # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
-  # Can be used by load balancers and uptime monitors to verify that the app is live.
+  # The rest of your routes stay exactly the same
   get "up" => "rails/health#show", as: :rails_health_check
-
-  # Render dynamic PWA files from app/views/pwa/*
   get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
   get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
 
