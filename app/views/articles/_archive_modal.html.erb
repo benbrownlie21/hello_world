@@ -1,0 +1,31 @@
+<% if article.archived? %>
+  <button type="button" class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#archiveModal-<%= article.id %>">
+    Unarchive
+  </button>
+<% else %>
+  <button type="button" class="btn btn-outline-warning" data-bs-toggle="modal" data-bs-target="#archiveModal-<%= article.id %>">
+    Archive
+  </button>
+<% end %>
+
+<div class="modal fade" id="archiveModal-<%= article.id %>" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Confirm</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body text-start">
+        Are you sure you want to <%= article.archived? ? "restore" : "archive" %> "<%= article.title %>"?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+        <% if article.archived? %>
+          <%= button_to "Unarchive", set_unarchived_article_path(article), method: :patch, class: "btn btn-primary" %>
+        <% else %>
+          <%= button_to "Archive", set_archived_article_path(article), method: :patch, class: "btn btn-warning" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

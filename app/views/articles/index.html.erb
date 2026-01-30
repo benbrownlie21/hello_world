@@ -3,7 +3,7 @@
 
 <table>
   <div class="dropdown">
-  <button class="btn btn-secondary dropdown-toggle gap-2 mb-3 px-2 mt-1" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+  <button class="btn btn-secondary btn-sm dropdown-toggle gap-2 mb-3 px-2 mt-1" type="button" data-bs-toggle="dropdown" aria-expanded="false">
     <%= params[:display]&.capitalize || "Active" %> Articles
   </button>
   <ul class="dropdown-menu">
@@ -29,18 +29,8 @@
         <div>
           <%= button_to "Show", article, method: :get, class: "btn btn-outline-secondary" %>
           <%= button_to "Edit", edit_article_path(article), method: :get, class: "btn btn-outline-secondary" %>
-          <% if article.archived? %>
-            <%= button_to "Unarchive", set_unarchived_article_path(article), 
-                method: :patch, 
-                class: "btn btn-outline-secondary",
-                data: { turbo_confirm: "Are you sure you want to restore this article?" } %>
-          <% else %>
-            <%= button_to "Archive", set_archived_article_path(article), 
-                method: :patch, 
-                class: "btn btn-outline-warning",
-                data: { turbo_confirm: "Are you sure you want to archive this article?" } %>
-          <% end %>
-          <%= button_to "Delete", article, method: :delete, class: "btn btn-outline-danger", data: { turbo_confirm: "Are you sure you want to delete this article?" } %>
+          <%= render "archive_modal", article: article %>
+          <%= render "delete_modal", article: article %>
         </div>
       </td>
       </tr>
