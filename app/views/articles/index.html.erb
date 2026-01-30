@@ -2,9 +2,15 @@
 
 
 <table>
-  <div class="d-flex gap-2 mb-3 px-2 mt-1">
-    <%= link_to "Show All", articles_path(display: "all"), class: "btn btn-outline-success" %>
-    <%= link_to "Show Active", articles_path, class: "btn btn-outline-primary" %>
+  <div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle gap-2 mb-3 px-2 mt-1" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+    <%= params[:display]&.capitalize || "Active" %> Articles
+  </button>
+  <ul class="dropdown-menu">
+    <li><%= link_to "Show All", articles_path(display: "all"), class:"dropdown-item" %></li>
+    <li><%= link_to "Show Active", articles_path(display: "active"), class:"dropdown-item" %></li>
+    <li><%= link_to "Show Archived", articles_path(display: "archived"), class:"dropdown-item" %></li>
+  </ul>
   </div>
   <thead>
     <tr>
