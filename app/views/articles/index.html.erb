@@ -20,9 +20,9 @@
         <td><%= article.title %></td>
         <td><%= article.description %></td>
         <td>
-        <div class="button-group">
-          <%= button_to "Show", article, method: :get %>
-          <%= button_to "Edit", edit_article_path(article), method: :get %>
+        <div>
+          <%= button_to "Show", article, method: :get, class: "btn btn-outline-secondary" %>
+          <%= button_to "Edit", edit_article_path(article), method: :get, class: "btn btn-outline-secondary" %>
           <% if article.archived? %>
             <%= button_to "Unarchive", set_unarchived_article_path(article), 
                 method: :patch, 
@@ -34,9 +34,18 @@
                 class: "btn btn-outline-warning",
                 data: { turbo_confirm: "Are you sure you want to archive this article?" } %>
           <% end %>
-          <%= button_to "Delete", article, method: :delete, data: { turbo_confirm: "Are you sure you want to delete this article?" } %>
+          <%= button_to "Delete", article, method: :delete, class: "btn btn-outline-danger", data: { turbo_confirm: "Are you sure you want to delete this article?" } %>
         </div>
       </td>
       </tr>
   <% end %> </tbody>
 </table>
+
+<table class="table">
+  </table>
+
+<div class="d-flex gap-1 mt-2 px-1 align-items-center">  
+  <span class="ms-auto text-muted">
+    Showing <strong><%= @articles.count %></strong> of <%= Article.all.count %> Articles
+  </span>
+</div>

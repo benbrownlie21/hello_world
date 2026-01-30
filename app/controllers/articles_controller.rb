@@ -10,6 +10,8 @@ class ArticlesController < ApplicationController
     else
       @articles = Article.active
     end
+    @active_count = Article.active.count
+    @total_count = Article.all.count
   end
 
   # GET /articles/1 or /articles/1.json
@@ -72,7 +74,6 @@ class ArticlesController < ApplicationController
     redirect_to articles_path, notice: "Article was successfully archived"
   end
 
-  # Change 'unset' to 'set_un' to match your button path
   def set_unarchived
     @article = Article.find(params[:id])
     @article.update_column(:archived, false)
