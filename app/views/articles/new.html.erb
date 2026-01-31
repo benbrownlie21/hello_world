@@ -1,5 +1,7 @@
 <% content_for :title, "New Article" %>
 
 <h3 style="padding-left: 6px">New Article</h3>
+<%= render "progress_bar", article: @article %>
+</br>
 
 <%= render "form", article: @article %>

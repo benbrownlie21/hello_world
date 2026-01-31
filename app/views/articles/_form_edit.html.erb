@@ -22,7 +22,7 @@
         <%= f.text_area :description, rows: 5, class: "form-control" %>
       </div>
 
-      <%= f.submit class: "btn btn-outline-success" %>
+      <%= render "edit_modal", article: @article %>
       <%= link_to "Back", @article, method: :get, class: "btn btn-outline-secondary ms-2" %>
       <%= link_to "Article List", articles_path, class: "btn btn-outline-secondary ms-2" %>
     <% end %>

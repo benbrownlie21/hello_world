@@ -29,3 +29,29 @@
 </div>
 
 <% end %>
+
+<script>
+  document.addEventListener("turbo:load", function() {
+    const titleInput = document.querySelector('input[name="article[title]"]');
+    const descInput = document.querySelector('textarea[name="article[description]"]');
+    const progressBar = document.querySelector('.progress-bar');
+
+    function updateProgress() {
+      let score = 0;
+      if (titleInput.value.trim() !== "") score += 50;
+      if (descInput.value.trim() !== "") score += 50;
+
+      progressBar.style.width = score + "%";
+      progressBar.textContent = score + "%";
+      
+      if (score === 100) {
+        progressBar.classList.replace('bg-primary', 'bg-success');
+      } else {
+        progressBar.classList.replace('bg-success', 'bg-primary');
+      }
+    }
+
+    titleInput.addEventListener("input", updateProgress);
+    descInput.addEventListener("input", updateProgress);
+  });
+</script>
