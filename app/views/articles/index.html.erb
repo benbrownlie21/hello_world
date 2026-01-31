@@ -7,9 +7,9 @@
     <%= params[:display]&.capitalize || "Active" %> Articles
   </button>
   <ul class="dropdown-menu">
-    <li><%= link_to "Show All", articles_path(display: "all"), class:"dropdown-item" %></li>
-    <li><%= link_to "Show Active", articles_path(display: "active"), class:"dropdown-item" %></li>
-    <li><%= link_to "Show Archived", articles_path(display: "archived"), class:"dropdown-item" %></li>
+    <li><small><%= link_to "Show All", articles_path(display: "all"), class:"dropdown-item" %></small></li>
+    <li><small><%= link_to "Show Active", articles_path(display: "active"), class:"dropdown-item" %></small></li>
+    <li><small><%= link_to "Show Archived", articles_path(display: "archived"), class:"dropdown-item" %></small></li>
   </ul>
   </div>
   <thead>
@@ -27,8 +27,8 @@
         <td><%= article.description %></td>
         <td>
         <div>
-          <%= button_to "Show", article, method: :get, class: "btn btn-outline-secondary" %>
-          <%= button_to "Edit", edit_article_path(article), method: :get, class: "btn btn-outline-secondary" %>
+          <%= button_to "Show", article, method: :get, class: "btn btn-outline-secondary btn-sm" %>
+          <%= button_to "Edit", edit_article_path(article), method: :get, class: "btn btn-outline-secondary btn-sm" %>
           <%= render "archive_modal", article: article %>
           <%= render "delete_modal", article: article %>
         </div>
