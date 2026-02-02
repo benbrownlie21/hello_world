@@ -16,4 +16,8 @@
         <%= button_to 'Next >', article_path(@next_record), method: :get, class: "btn btn-light" if @next_record %>
     </div>
   </div>
+  <div class="card-footer small">
+    Created: <%= @article.created_at.strftime("%d-%m-%Y %H:%M") %> |
+    Last Updated: <%= @article.updated_at.strftime("%d-%m-%Y %H:%M") %>
+  </div>
 </div>

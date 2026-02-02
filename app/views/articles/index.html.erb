@@ -2,20 +2,24 @@
 
 
 <table>
-  <div class="dropdown">
-  <button class="btn btn-secondary btn-sm dropdown-toggle gap-2 mb-3 px-2 mt-1" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-    <%= params[:display]&.capitalize || "Active" %> Articles
-  </button>
-  <ul class="dropdown-menu">
-    <li><small><%= link_to "Show All", articles_path(display: "all"), class:"dropdown-item" %></small></li>
-    <li><small><%= link_to "Show Active", articles_path(display: "active"), class:"dropdown-item" %></small></li>
-    <li><small><%= link_to "Show Archived", articles_path(display: "archived"), class:"dropdown-item" %></small></li>
-  </ul>
+  <div class="d-flex align-items-center gap-1 mb-3">
+    <div class="dropdown">
+    <button class="btn btn-secondary btn-sm dropdown-toggle gap-1 mb-2 px-2 mt-1" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+      <%= params[:display]&.capitalize || "Active" %> Articles
+    </button>
+    <ul class="dropdown-menu">
+      <li><small><%= link_to "Show All", articles_path(display: "all"), class:"dropdown-item" %></small></li>
+      <li><small><%= link_to "Show Active", articles_path(display: "active"), class:"dropdown-item" %></small></li>
+      <li><small><%= link_to "Show Archived", articles_path(display: "archived"), class:"dropdown-item" %></small></li>
+    </ul>
+    </div>
   </div>
   <thead>
     <tr>
       <th>Title</th>
       <th>Description</th>
+      <th>Created</th>
+      <th>Updated</th>
       <th colspan="4"></th>
     </tr>
   </thead>
@@ -25,6 +29,8 @@
       <tr>
         <td><%= article.title %></td>
         <td><%= article.description %></td>
+        <td><%= article.created_at.strftime("%d-%m-%Y %H:%M") %></td>
+        <td><%= article.updated_at.strftime("%d-%m-%Y %H:%M") %></td>
         <td>
         <div>
           <%= button_to "Show", article, method: :get, class: "btn btn-outline-secondary btn-sm" %>
