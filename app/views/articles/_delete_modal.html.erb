@@ -1,6 +1,9 @@
-<button type="button" class="btn btn-outline-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal-<%= article.id %>">
-  Delete
-</button>
+<%# Only show the trigger button if we explicitly ask for it %>
+<% if local_assigns[:show_button] %>
+  <button type="button" class="btn btn-outline-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal-<%= article.id %>">
+    Delete
+  </button>
+<% end %>
 
 <div class="modal fade" id="deleteModal-<%= article.id %>" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
   <div class="modal-dialog">

@@ -1,0 +1,28 @@
+<div class="dropdown">
+  <button class="btn btn-sm dropdown-toggle btn-light" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+    <%= image_tag "menu.png", alt: "dropdown", width: "20", height: "20" %>
+  </button>
+  <ul class="dropdown-menu">
+    <li><%= link_to "Show", article, class: "dropdown-item" %></li>
+    <li><%= link_to "Edit", edit_article_path(article), class: "dropdown-item" %></li>
+    <li><hr class="dropdown-divider"></li>
+    
+    <%# We use a button tag here because it triggers a Modal, it's not a link to a new page %>
+    <li>
+      <button class="dropdown-item <%= article.archived? ? 'text-primary' : 'text-warning' %>" 
+              data-bs-toggle="modal" 
+              data-bs-target="#archiveModal-<%= article.id %>">
+        <%= article.archived? ? "Unarchive" : "Archive" %>
+      </button>
+    </li>
+    <li>
+      <button class="dropdown-item text-danger" data-bs-toggle="modal" data-bs-target="#deleteModal-<%= article.id %>">
+        Delete
+      </button>
+    </li>
+  </ul>
+</div>
+
+<%# Render the actual Modal HTML here (it stays hidden until the button is clicked) %>
+<%= render "archive_modal", article: article, show_button: false %>
+<%= render "delete_modal", article: article, show_button: false %>

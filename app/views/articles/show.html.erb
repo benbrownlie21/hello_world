@@ -10,8 +10,8 @@
      <div class="button-group d-flex gap-2"> 
         <%= button_to '< Previous', article_path(@previous_record), method: :get, class: "btn btn-light" if @previous_record %>
         <%= button_to "Edit", edit_article_path(@article), method: :get, class: "btn btn-outline-secondary" %>
-        <%= render "archive_modal", article: @article %>
-        <%= render "delete_modal", article: @article %>
+        <%= render "archive_modal", article: @article, show_button: true %>
+        <%= render "delete_modal", article: @article, show_button: true %>
         <%= button_to "Back", articles_path, method: :get, class: "btn btn-outline-secondary" %>
         <%= button_to 'Next >', article_path(@next_record), method: :get, class: "btn btn-light" if @next_record %>
     </div>

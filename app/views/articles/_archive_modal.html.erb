@@ -1,10 +1,9 @@
-<% if article.archived? %>
-  <button type="button" class="btn btn-outline-primary btn-sm" data-bs-toggle="modal" data-bs-target="#archiveModal-<%= article.id %>">
-    Unarchive
-  </button>
-<% else %>
-  <button type="button" class="btn btn-outline-warning btn-sm" data-bs-toggle="modal" data-bs-target="#archiveModal-<%= article.id %>">
-    Archive
+<%# Only show the trigger button if we explicitly ask for it %>
+<% if local_assigns[:show_button] %>
+  <button type="button" class="btn <%= article.archived? ? 'btn-outline-primary btn-sm' : 'btn-outline-warning btn-sm' %>"
+      data-bs-toggle="modal" 
+      data-bs-target="#archiveModal-<%= article.id %>">
+    <%= article.archived? ? "Unarchive" : "Archive" %>
   </button>
 <% end %>
 

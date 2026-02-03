@@ -31,26 +31,18 @@ th, td {
   font-size: 16px;
 }
 
-th{
-  position: relative; // Needed to anchor the pseudo-element
-  height: 50px;       // Set your desired header height
-  border-right: none; // Remove the old full-length border
-  
-  // Create the "small dash"
-  &::after {
-    content: "";
-    position: absolute;
-    right: 0;
-    top: 25%;         // Pushes the dash down from the top
-    height: 50%;      // Makes the dash only 50% of the cell height
-    width: 1px;       // The thickness of the dash
-    background-color: #ddd;
+/* Remove the vertical line between the 4th and 5th column */
+.table-bordered {
+  th:nth-child(4), 
+  td:nth-child(4) {
+    border-right: none;
   }
-}
 
-// Optional: Remove the dash from the very last column
-th:last-child::after {
-  display: none;
+  /* Also remove the left border of the 5th column just to be safe */
+  th:nth-child(5),
+  td:nth-child(5) {
+    border-left: none;
+  }
 }
 
 td {
