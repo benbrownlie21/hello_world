@@ -24,20 +24,33 @@
     </tr>
   </thead>
 
-  <tbody>
-    <% @articles.each do |article| %>
+    <tbody>
+    <% if @articles.any? %>
+      <% @articles.each do |article| %>
+        <tr>
+          <td><%= article.title %></td>
+          <td><%= article.description %></td>
+          <td><%= article.created_at.strftime("%d-%m-%Y %H:%M") %></td>
+          <td><%= article.updated_at.strftime("%d-%m-%Y %H:%M") %></td>
+          <td>
+            <div>
+              <%= render "actions_dropdown", article: article %>
+            </div>
+          </td>
+        </tr>
+      <% end %>
+    <% else %>
       <tr>
-        <td><%= article.title %></td>
-        <td><%= article.description %></td>
-        <td><%= article.created_at.strftime("%d-%m-%Y %H:%M") %></td>
-        <td><%= article.updated_at.strftime("%d-%m-%Y %H:%M") %></td>
-        <td>
-        <div>
-          <%= render "actions_dropdown", article: article %>
-        </div>
-      </td>
+        <td colspan="5" class="text-center text-muted py-3">
+          <% if params[:display] == "archived" %>
+            No articles are archived
+          <% else %>
+            You have no articles
+          <% end %>
+        </td>
       </tr>
-  <% end %> </tbody>
+    <% end %>
+  </tbody>
 </table>
 
 <table class="table">
