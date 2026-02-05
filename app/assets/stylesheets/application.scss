@@ -35,7 +35,7 @@ th, td {
 .table-bordered {
   th:nth-child(4), 
   td:nth-child(4) {
-    border-right: none;
+  border-right: none;
   }
 
   /* Also remove the left border of the 5th column just to be safe */
@@ -51,10 +51,6 @@ td {
   border-bottom: 1px solid #ddd;
   font-size: 14px;
 }
-
-/* tr:hover {
-  background-color: #f5f5f5;
-} */
 
 /* Fix for button_to alignment */
 form.button_to {
@@ -138,4 +134,3 @@ body,html {
 .modal-header {
   background-color: #21252908;
 }
-

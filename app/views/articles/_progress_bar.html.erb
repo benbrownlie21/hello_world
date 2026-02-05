@@ -1,14 +1,14 @@
 <div id="progress-container">
-    <% 
+    <%
     score = 0
     score += 50 if article.title.present?
     score += 50 if article.description.present?
     %>
 
-    <div class="progress mb-3" role="progressbar" aria-label="Article completion" aria-valuenow="<%= score %>" aria-valuemin="0" aria-valuemax="100">
+    <div style="height:30px;" class="progress mb-1" role="progressbar" aria-label="Article completion" aria-valuenow="<%= score %>" aria-valuemin="0" aria-valuemax="100">
     <div class="progress-bar <%= score == 100 ? 'bg-success' : 'bg-primary' %>" 
         style="width: <%= score %>%">
-        <%= score %>
+        <%= score %>%
     </div>
     </div>
 </div>
