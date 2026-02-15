@@ -65,7 +65,7 @@ class ArticlesController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to articles_path, notice: "Article was successfully deleted", status: :see_other }
-      format.json { head :no_content }
+      format.json { render json: { message: "Article deleted" }, status: :ok }
     end
   end
 
