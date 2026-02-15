@@ -1,4 +1,5 @@
 class ArticlesController < ApplicationController
+  protect_from_forgery unless: -> { request.format.json? }
   before_action :set_article, only: %i[ show edit update destroy ]
 
   # GET /articles or /articles.json
@@ -88,6 +89,6 @@ class ArticlesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def article_params
-      params.require(:article).permit(:title, :description)
+      params.require(:article).permit(:title, :description, :archived)
     end
 end
